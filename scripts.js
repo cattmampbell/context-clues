@@ -1,8 +1,7 @@
 $(document).ready(() => {
-    // console.log(`Testing... Testing... 1, 2, 3, 4, Context Clues!`); // Should log: Testing... Testing... 1, 2, 3, 4, Context Clues!
+    console.log(`Start of script!`); // Should log: Start of script!
 
-    // Initialize accusationCount to 0
-    var accusationCount = 0;
+    /* ************************    START OF SCRIPT   *********************** */
 
     // An array of 5 friend names
     var friends = [
@@ -18,13 +17,13 @@ $(document).ready(() => {
         `attic`, // locations[0] = attic
         `backyard`, // locations[1] = backyard
         `baño`, // locations[2] = baño
-        `beach` // locations[3] = beach
+        `beach`, // locations[3] = beach
         `café`, // locations[4] = café
         `classroom`, // locations[5] = classroom
         `garden`, // locations[6] = garden
         `kitchen`, // locations[7] = kitchen
         `laboratory`, // locations[8] = laboratory
-        `park`, // locations[9] = park
+        `park` // locations[9] = park
     ];
 
     // An array of 20 weapon names
@@ -53,17 +52,16 @@ $(document).ready(() => {
 
     // When the page loads, insert 100 <h3> elements onto the page
     for (var i = 0; i < 100; i += 1) {
-        // Adds 1 to accusationCount w/ each iteration 
-        accusationCount += 1; 
         // Creates <button>, appends to #row2
-        $(`#row2`).append(`<button id="accusation${accusationCount}" class="accusation col-4 btn btn-lg btn-secondary h3 text-center px-2 py-3 mx-2 my-2">Accusation #${accusationCount}</button>`);
+        $(`#row2`).append(`<button id="accusation${i + 1}" class="accusation col-4 btn btn-lg btn-light h3 text-center px-2 py-3 mx-2 my-2">Accusation #${i + 1}</button>`);
     }
 
     // Click event listener on .accusation
     $(`.accusation`).on(`click`, (event) => {
-        // alert(`Testing... 1, 2, 3...`);
-        alert(`${event.target.textContent}: `)
+        alert(`Testing... Testing... 1, 2, 3...`); 
     })
+
+    /* ************************    END OF SCRIPT   *********************** */
 
     console.log(`End of script!`); // Should log: End of script!
 })

@@ -1,8 +1,4 @@
-.button:hover {
+.accusation:hover {
     cursor: pointer;
-    background-color: #6c757d;
-}
-
-.button:active {
-    background-color: #343a40;
+    /* background-color: #6c757d; */
 }
