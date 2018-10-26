@@ -1,8 +1,9 @@
-$(document).ready(() => {
-    console.log(`Start of script!`); // Should log: Start of script!
+// Run on load...
+$(document).ready(function() {
+     // Should log: Start of script.
+    console.log(`Start of script.`);
 
-    /* ************************    START OF SCRIPT   *********************** */
-
+    // Declare all variables:
     // An array of 5 friend names
     var friends = [
         `Olivia`, // friend[0] = Olivia
@@ -50,18 +51,23 @@ $(document).ready(() => {
         `watering can` // weapons[19] = watering can (garden)
     ];
 
-    // When the page loads, insert 100 <h3> elements onto the page
-    for (var i = 0; i < 100; i += 1) {
-        // Creates <button>, appends to #row2
-        $(`#row2`).append(`<button id="accusation${i + 1}" class="accusation col-4 btn btn-lg btn-light h3 text-center px-2 py-3 mx-2 my-2">Accusation #${i + 1}</button>`);
+    // Declare all functions:
+    // 
+    function createAccusation() {
+        // Create/add 100 accusations to page
+        for (var i = 1; i <= 100; i += 1) {
+            // Creates <button>, appends to #row2
+            $(`#row2`).append(`<button id="accusation${i}" class="accusation col-4 btn btn-lg btn-light h3 text-center px-3 py-4 mx-3 my-2">Accusation ${i}</button>`);
+        }
+
+        // When .accusation clicked...
+        $(`.accusation`).on(`click`, (event) => {
+            alert(`${event.target.textContent}: `);
+        })
     }
 
-    // Click event listener on .accusation
-    $(`.accusation`).on(`click`, (event) => {
-        alert(`Testing... Testing... 1, 2, 3...`); 
-    })
+    createAccusation();
 
-    /* ************************    END OF SCRIPT   *********************** */
-
-    console.log(`End of script!`); // Should log: End of script!
+    // Should log: End of script.
+    console.log(`End of script.`);
 })
