@@ -3,70 +3,57 @@ $(document).ready(function() {
      // Should log: Start of script.
     console.log(`Start of script.`);
 
-    // Declare all variables:
+    // Declare all global variables:
     // An array of 5 friend names
-    var friends = [
-        `Olivia`, // friend[0] = Olivia
-        `Cody`, // friend[1] = Cody
-        `Megan`, // friend[2] = Megan
-        `Caleb`, // friend[3] = Caleb
-        `Toast` // friend[4] = Toast
-    ];
+    var friends = [`Olivia`, `Cody`, `Megan`, `Caleb`, `Toast`];
+
+    // An array of 20 item names
+    var items = [`ball`, `book`, `comb`, `flower pot`, `lampshade`, `magnifying glass`, `microscope`, `mug`, `newspaper`, `pencil`, `pillow`, `plunger`, `rock`, `spatula`, `spoon`, `stick`, `teapot`, `toothbrush`, `umbrella`, `watering can`];
 
     // An array of 10 location names
-    var locations = [
-        `attic`, // locations[0] = attic
-        `backyard`, // locations[1] = backyard
-        `baño`, // locations[2] = baño
-        `beach`, // locations[3] = beach
-        `café`, // locations[4] = café
-        `classroom`, // locations[5] = classroom
-        `garden`, // locations[6] = garden
-        `kitchen`, // locations[7] = kitchen
-        `laboratory`, // locations[8] = laboratory
-        `park` // locations[9] = park
-    ];
+    var locations = [`attic`, `backyard`, `baño`, `beach house`, `café`, `classroom`, `garden`, `kitchen`, `laboratory`, `park`];
 
-    // An array of 20 weapon names
-    var weapons = [
-        `ball`, // weapons[0] = ball (backyard)
-        `book`, // weapons[1] = book (classroom)
-        `comb`, // weapons[2] = comb (baño)
-        `flower pot`, // weapons[3] = flower pot (garden)
-        `lampshade`, // weapons[4] = lampshade (attic)
-        `magnifying glass`, // weapons[5] = magnifying glass (laboratory)
-        `microscope`, // weapons[6] = microscope (laboratory)
-        `mug`, // weapons[7] = mug (café)
-        `newspaper`, // weapons[8] = newspaper (park)
-        `pencil`, // weapons[9] = pencil (classroom)
-        `pillow`, // weapons[10] = pillow (attic)
-        `plunger`, // weapons[11] = plunger (baño)
-        `rock`, // weapons[12] = rock (park)
-        `spatula`, // weapons[13] = spatula (kitchen)
-        `spoon`, // weapons[14] = spoon (kitchen)
-        `stick`, // weapons[15] = stick (park)
-        `teapot`, // weapons[16] = teapot (café)
-        `toothbrush`, // weapons[17] = toothbrush (baño)
-        `umbrella`, // weapons[18] = umbrella (beach)
-        `watering can` // weapons[19] = watering can (garden)
-    ];
+    // Create/add 100 accusations to page
+    for (var i = 0; i < 100; i += 1) {
+        // Creates myBtn
+        var myBtn = $(`<button id="accusation${i + 1}" class="accusation col-4 btn btn-lg btn-light h3 text-center px-3 py-4 mx-3 my-2">Accusation #${i + 1}</button>`);
 
-    // Declare all functions:
-    // 
-    function createAccusation() {
-        // Create/add 100 accusations to page
-        for (var i = 1; i <= 100; i += 1) {
-            // Creates <button>, appends to #row2
-            $(`#row2`).append(`<button id="accusation${i}" class="accusation col-4 btn btn-lg btn-light h3 text-center px-3 py-4 mx-3 my-2">Accusation ${i}</button>`);
+        // Creates friendsIndex, itemsIndex and locationsIndex
+        var friendsIndex = friends[i];
+        var itemsIndex = items[i];
+        var locationsIndex = locations[i];
+
+        // Keeps friendsIndex = 0 to 4
+        if(i >= 5) {
+            friendsIndex = friends[i % 5];
         }
 
-        // When .accusation clicked...
-        $(`.accusation`).on(`click`, (event) => {
-            alert(`${event.target.textContent}: `);
-        })
-    }
+        // Keeps itemsIndex = 0 to 20
+        if(i >= 20) {
+            itemsIndex = items[i % 20];
+        }
 
-    createAccusation();
+        // Keeps locationsIndex = 0 to 9
+        if(i >= 10) {
+            locationsIndex = locations[i % 10];
+        }
+
+        // Should log: Accusation #___: I accuse friendIndex[i], with the itemsIndex[i], in the locationsIndex[i]!
+        console.log(`Accusation #${i + 1}: I accuse ${friendsIndex}, with the ${itemsIndex} in the ${locationsIndex}!`);
+
+        // Creates myAccusation/returns createAccusation function with arguments...
+        var myAccusation = createAccusation(friendsIndex, itemsIndex, locationsIndex); 
+        // Appends myAccusation to #row2
+        $(`#row2`).append(myAccusation);
+
+        function createAccusation(friend, item, location) {
+            // When myBtn clicked...
+            return myBtn.click(function(event) {
+                // Should alert: Accusation #___: I accuse friend, with the item, in the location!
+                alert(`${event.target.textContent}: I accuse ${friend}, with the ${item} in the ${location}!`);
+            })
+        };
+    }
 
     // Should log: End of script.
     console.log(`End of script.`);
